@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Awareness Quiz - FloodFacts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="quiz">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="index.html"><i class="fas fa-water"></i> FloodFacts</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="home" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="preparedness" href="preparedness.html">Preparedness</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="quiz" href="quiz.html">Quiz</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="stories" href="stories.html">Stories</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="about" href="about.html">About</a></li>
+                    <li class="nav-item"><a id="login-link" class="nav-link text-white" data-nav="login" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section bg-light text-center">
+            <div class="container">
+                <h1 class="display-5 text-primary mb-3"><i class="fas fa-question-circle"></i> Flood Awareness Quiz</h1>
+                <p class="lead text-dark">Answer 15 quick questions to see how prepared you are for floods. Your latest score is saved on this device.</p>
+                <div id="last-score" class="text-muted"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div id="quiz-start" class="row">
+                    <div class="col-lg-8 offset-lg-2 text-center">
+                        <div class="card shadow-sm">
+                            <div class="card-body py-5">
+                                <h2 class="card-title mb-3">Ready to Test Your Knowledge?</h2>
+                                <p class="mb-4">The quiz covers preparation, safety during floods, and clean-up afterwards.</p>
+                                <div id="quiz-login-notice" class="alert alert-warning py-2" style="display:none;">
+                                    Please <a href="login.html" class="alert-link">log in</a> to access the quiz.
+                                </div>
+                                <button id="start-quiz-btn" class="btn btn-primary btn-lg" onclick="startQuiz()">
+                                    <i class="fas fa-play"></i> Start Quiz
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quiz-container" style="display:none;">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <span id="question-number">Question 1/15</span>
+                                            <span id="score-display">Score: 0</span>
+                                        </div>
+                                        <div class="progress" style="height: 15px;">
+                                            <div id="quiz-progress-bar" class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                    <div id="question" class="mb-4"></div>
+                                    <div id="options"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="result" style="display:none;">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <div class="card shadow-sm">
+                                <div class="card-body text-center py-5">
+                                    <h2 class="mb-4">Quiz Complete!</h2>
+                                    <div class="mb-4">
+                                        <div style="font-size: 3rem; font-weight: bold; color: #007bff;">
+                                            <span id="score"></span>
+                                        </div>
+                                        <div style="font-size: 1.5rem; color: #6c757d;">
+                                            <span id="percentage"></span> Correct
+                                        </div>
+                                    </div>
+                                    <p id="feedback" class="lead mb-4" style="font-size: 1.1rem;"></p>
+                                    <button class="btn btn-primary btn-lg me-2" onclick="startQuiz()">
+                                        <i class="fas fa-redo"></i> Try Again
+                                    </button>
+                                    <a href="preparedness.html" class="btn btn-outline-primary btn-lg">
+                                        <i class="fas fa-clipboard-check"></i> Review Tips
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-4 bg-primary text-white text-center">
+        <div class="container">
+            <small>&copy; <span id="current-year"></span> FloodFacts. Empowering communities with flood awareness.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        const savedScore = localStorage.getItem('floodQuizScore');
+        if (savedScore) {
+            document.getElementById('last-score').textContent = `Last score on this device: ${savedScore}/15`;
+        }
+    </script>
+</body>
+</html>
+
