@@ -1,4 +1,4 @@
-// Ensure globally accessible handlers for inline events
+
 window.handleLogin = function handleLogin(event) {
     event.preventDefault();
     const usernameInput = document.getElementById('username');
@@ -16,6 +16,7 @@ window.handleLogin = function handleLogin(event) {
 (function () {
     const CHECKLIST_KEY_PREFIX = 'flood-checklist-';
     const STORIES_STORAGE_KEY = 'flood-stories';
+    const USERS_STORAGE_KEY = 'flood-users';
 
     function getAuthInfo() {
         const loggedIn = localStorage.getItem('loggedIn');
@@ -24,6 +25,20 @@ window.handleLogin = function handleLogin(event) {
             loggedIn: Boolean(loggedIn && username),
             username: username || ''
         };
+    }
+
+    function loadUsers() {
+        try {
+            const stored = localStorage.getItem(USERS_STORAGE_KEY);
+            return stored ? JSON.parse(stored) : [];
+        } catch (error) {
+            console.error('Failed to parse users', error);
+            return [];
+        }
+    }
+
+    function saveUsers(users) {
+        localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
     }
 
     const questions = [
@@ -177,8 +192,21 @@ window.handleLogin = function handleLogin(event) {
                 return;
             }
 
+            const users = loadUsers();
+            const matchedUser = users.find(user => user.username.toLowerCase() === username.toLowerCase());
+
+            if (!matchedUser) {
+                alert('Account not found. Please sign up first.');
+                return;
+            }
+
+            if (matchedUser.password !== password) {
+                alert('Incorrect password. Please try again.');
+                return;
+            }
+
             localStorage.setItem('loggedIn', 'true');
-            localStorage.setItem('username', username);
+            localStorage.setItem('username', matchedUser.username);
             window.location.href = 'index.html';
         });
     }
@@ -346,6 +374,54 @@ window.handleLogin = function handleLogin(event) {
         window.addEventListener('storage', updateStartState);
     }
 
+    function initSignupForm() {
+        const signupForm = document.getElementById('signup-form');
+        if (!signupForm) return;
+
+        signupForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const username = document.getElementById('signup-username')?.value.trim();
+            const email = document.getElementById('signup-email')?.value.trim();
+            const password = document.getElementById('signup-password')?.value.trim();
+            const confirm = document.getElementById('signup-confirm')?.value.trim();
+
+            if (!username || !email || !password || !confirm) {
+                alert('Please complete all fields.');
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long.');
+                return;
+            }
+
+            if (password !== confirm) {
+                alert('Passwords do not match. Please re-enter.');
+                return;
+            }
+
+            const users = loadUsers();
+            const exists = users.some(user =>
+                user.username.toLowerCase() === username.toLowerCase() ||
+                user.email.toLowerCase() === email.toLowerCase()
+            );
+
+            if (exists) {
+                alert('That username or email is already registered.');
+                return;
+            }
+
+            users.push({ username, email, password });
+            saveUsers(users);
+
+            localStorage.setItem('loggedIn', 'true');
+            localStorage.setItem('username', username);
+
+            alert('Welcome to FloodFacts!');
+            window.location.href = 'index.html';
+        });
+    }
+
     function initStories() {
         const storyForm = document.getElementById('story-form');
         const storiesList = document.getElementById('stories-list');
@@ -471,6 +547,7 @@ window.handleLogin = function handleLogin(event) {
         highlightActiveNav();
         initLoginLink();
         initLoginForm();
+        initSignupForm();
         initChecklist({
             itemSelector: '.checklist-item',
             countId: 'checked-count',
