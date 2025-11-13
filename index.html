@@ -8,374 +8,104 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- Fixed Top Navigation -->
+<body data-page="home">
     <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
         <div class="container">
-            <a class="navbar-brand text-white" href="#home"><i class="fas fa-water"></i> FloodFacts</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <a class="navbar-brand text-white" href="index.html"><i class="fas fa-water"></i> FloodFacts</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link text-white" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#before">Before the Flood</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#during">During the Flood</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#after">After the Flood</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#quiz">Quiz</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#about">About Us</a></li>
-                    <li class="nav-item"><a id="login-link" class="nav-link text-white" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="home" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="preparedness" href="preparedness.html">Preparedness</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="quiz" href="quiz.html">Quiz</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="stories" href="stories.html">Stories</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="about" href="about.html">About</a></li>
+                    <li class="nav-item"><a id="login-link" class="nav-link text-white" data-nav="login" href="login.html">Login</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Home Section -->
-    <section id="home" class="section bg-light">
-        <div class="container text-center py-5">
-            <h1 class="display-4 text-primary"><i class="fas fa-exclamation-triangle"></i> Welcome to FloodFacts</h1>
-            <p class="lead">Learn about flood safety, health precautions, and recovery using technology. Stay prepared and informed!</p>
-            <div id="welcome-message" style="display:none;"></div> <!-- Optional personalized message -->
-            <a href="#before" class="btn btn-primary btn-lg">Learn Safety Tips</a>
-        </div>
-    </section>
+    <main>
+        <section id="home" class="section text-center text-white">
+            <div class="container py-5">
+                <h1 class="display-4"><i class="fas fa-exclamation-triangle"></i> Welcome to FloodFacts</h1>
+                <p class="lead">Learn about flood safety, health precautions, and recovery. Stay prepared and informed!</p>
+                <div id="welcome-message" style="display:none;"></div>
+                <div class="mt-4">
+                    <a href="preparedness.html" class="btn btn-primary btn-lg me-2">Preparedness Checklist</a>
+                    <a href="quiz.html" class="btn btn-outline-light btn-lg">Take the Flood Quiz</a>
+                </div>
+            </div>
+        </section>
 
-    <!-- Before the Flood Section -->
-    <section id="before" class="section bg-white">
-        <div class="container py-5">
-            <h2 class="text-center text-primary mb-4"><i class="fas fa-shield-alt"></i> Before the Flood</h2>
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title text-center mb-4">Flood Preparedness Checklist</h4>
-                            
-                            <!-- Progress Bar -->
-                            <div class="mb-4">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span>Progress</span>
-                                    <span><span id="checked-count">0</span>/16</span>
-                                </div>
-                                <div class="progress" style="height: 25px;">
-                                    <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="16"></div>
-                                </div>
+        <section class="section bg-white">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <div class="display-6 text-primary mb-3"><i class="fas fa-shield-alt"></i></div>
+                                <h3 class="card-title">Before a Flood</h3>
+                                <p class="card-text">Plan ahead, build kits, and secure your home to minimize risks.</p>
+                                <a href="preparedness.html" class="btn btn-primary">View Checklist</a>
                             </div>
-                            
-                            <!-- Checklist Items -->
-                            <div class="checklist-container">
-                                <!-- Emergency Kit -->
-                                <h5 class="mt-2 mb-3 text-info"><i class="fas fa-backpack"></i> Emergency Kit</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check1">
-                                    <label class="form-check-label" for="check1">Stock water (1 gallon/person/day)</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check2">
-                                    <label class="form-check-label" for="check2">Store non-perishable food for 2 weeks</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check3">
-                                    <label class="form-check-label" for="check3">Keep all medications stocked</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check4">
-                                    <label class="form-check-label" for="check4">Prepare first aid kit</label>
-                                </div>
-                                
-                                <!-- Home Security -->
-                                <h5 class="mt-3 mb-3 text-info"><i class="fas fa-home"></i> Home Security</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check5">
-                                    <label class="form-check-label" for="check5">Elevate appliances above ground</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check6">
-                                    <label class="form-check-label" for="check6">Move documents to waterproof storage</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check7">
-                                    <label class="form-check-label" for="check7">Install flood vents in basement</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check8">
-                                    <label class="form-check-label" for="check8">Clear drainage around property</label>
-                                </div>
-                                
-                                <!-- Evacuation Planning -->
-                                <h5 class="mt-3 mb-3 text-info"><i class="fas fa-directions-run"></i> Evacuation</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check9">
-                                    <label class="form-check-label" for="check9">Identify evacuation routes</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check10">
-                                    <label class="form-check-label" for="check10">Know your flood zone</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check11">
-                                    <label class="form-check-label" for="check11">Plan pet evacuation</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check12">
-                                    <label class="form-check-label" for="check12">Pre-arrange accommodation</label>
-                                </div>
-                                
-                                <!-- Communication & Information -->
-                                <h5 class="mt-3 mb-3 text-info"><i class="fas fa-bell"></i> Communication</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check13">
-                                    <label class="form-check-label" for="check13">Subscribe to alert systems</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check14">
-                                    <label class="form-check-label" for="check14">Create family communication plan</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check15">
-                                    <label class="form-check-label" for="check15">Download weather alert apps</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input checklist-item" type="checkbox" id="check16">
-                                    <label class="form-check-label" for="check16">Store insurance & property photos</label>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <div class="display-6 text-primary mb-3"><i class="fas fa-phone-volume"></i></div>
+                                <h3 class="card-title">During a Flood</h3>
+                                <p class="card-text">Know the critical steps to keep your family safe when waters rise.</p>
+                                <a href="preparedness.html#during" class="btn btn-primary">Safety Actions</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <div class="display-6 text-primary mb-3"><i class="fas fa-heartbeat"></i></div>
+                                <h3 class="card-title">After a Flood</h3>
+                                <p class="card-text">Recover safely with health, sanitation, and support resources.</p>
+                                <a href="stories.html#after-care" class="btn btn-primary">Recovery Tips</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- During the Flood Section -->
-    <section id="during" class="section bg-light">
-        <div class="container py-5">
-            <h2 class="text-center text-primary mb-4"><i class="fas fa-phone"></i> During the Flood</h2>
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title text-center mb-4">During the Flood Action Checklist</h4>
-                            
-                            <!-- Progress Bar -->
-                            <div class="mb-4">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span>Progress</span>
-                                    <span><span id="during-checked-count">0</span>/16</span>
-                                </div>
-                                <div class="progress" style="height: 25px;">
-                                    <div id="during-progress-bar" class="progress-bar bg-warning" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="16"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Checklist Items -->
-                            <div class="checklist-container">
-                                <!-- Immediate Actions -->
-                                <h5 class="mt-2 mb-3 text-info"><i class="fas fa-exclamation-circle"></i> Immediate Actions</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check1">
-                                    <label class="form-check-label" for="during-check1">Move to higher ground</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check2">
-                                    <label class="form-check-label" for="during-check2">Turn off gas and electricity</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check3">
-                                    <label class="form-check-label" for="during-check3">Avoid flooded roads</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check4">
-                                    <label class="form-check-label" for="during-check4">Do not use elevators</label>
-                                </div>
-                                
-                                <!-- Family & Communication -->
-                                <h5 class="mt-3 mb-3 text-info"><i class="fas fa-users"></i> Family & Communication</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check5">
-                                    <label class="form-check-label" for="during-check5">Alert family members</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check6">
-                                    <label class="form-check-label" for="during-check6">Contact meeting point</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check7">
-                                    <label class="form-check-label" for="during-check7">Register with authorities</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check8">
-                                    <label class="form-check-label" for="during-check8">Update emergency contacts</label>
-                                </div>
-                                
-                                <!-- Health & Safety -->
-                                <h5 class="mt-3 mb-3 text-info"><i class="fas fa-heartbeat"></i> Health & Safety</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check9">
-                                    <label class="form-check-label" for="during-check9">Avoid flood water contact</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check10">
-                                    <label class="form-check-label" for="during-check10">Do not touch electrical equipment</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check11">
-                                    <label class="form-check-label" for="during-check11">Wear protective gear</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check12">
-                                    <label class="form-check-label" for="during-check12">Keep medications secure</label>
-                                </div>
-                                
-                                <!-- Valuables & Documentation -->
-                                <h5 class="mt-3 mb-3 text-info"><i class="fas fa-photo-video"></i> Valuables & Documentation</h5>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check13">
-                                    <label class="form-check-label" for="during-check13">Grab critical documents</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check14">
-                                    <label class="form-check-label" for="during-check14">Take property photos/videos</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check15">
-                                    <label class="form-check-label" for="during-check15">Keep emergency kit with you</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input during-checklist-item" type="checkbox" id="during-check16">
-                                    <label class="form-check-label" for="during-check16">Follow official instructions</label>
-                                </div>
-                            </div>
-                        </div>
+        <section class="section bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-primary mb-3"><i class="fas fa-chart-line"></i> Why Readiness Matters</h2>
+                        <p>Floods are the most common natural disaster. Preparation reduces loss, shortens recovery time, and keeps communities strong.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Understand risks in your area</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Prepare emergency contacts and supplies</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Review evacuation routes with your family</li>
+                        </ul>
+                        <a href="quiz.html" class="btn btn-outline-primary mt-2">Test Your Knowledge</a>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- After the Flood Section -->
-    <section id="after" class="section bg-white">
-        <div class="container py-5">
-            <h2 class="text-center text-primary mb-4"><i class="fas fa-heartbeat"></i> After the Flood</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>Health Advice</h4>
-                    <p>Avoid contaminated water. Boil water before drinking. Watch for mold and use protective gear.</p>
-                    <h4>Sanitation Info</h4>
-                    <p>Clean surfaces with bleach solution. Dispose of damaged food and items safely.</p>
-                </div>
-                <div class="col-md-6">
-                    <h4>Share Your Story</h4>
-                    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="city" class="form-label">City</label>
-                            <input type="text" class="form-control" id="city" name="city" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Message</label>
-                            <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            </div>
+    <footer class="py-4 bg-primary text-white text-center">
+        <div class="container">
+            <small>&copy; <span id="current-year"></span> FloodFacts. Empowering communities with flood awareness.</small>
         </div>
-    </section>
-
-    <!-- Quiz Section -->
-    <section id="quiz" class="section bg-light">
-        <div class="container py-5">
-            <h2 class="text-center text-primary mb-4"><i class="fas fa-question-circle"></i> Flood Safety Quiz</h2>
-            
-            <!-- Start Screen -->
-            <div id="quiz-start" class="row">
-                <div class="col-lg-8 offset-lg-2 text-center">
-                    <div class="card">
-                        <div class="card-body py-5">
-                            <h4 class="card-title mb-3">Test Your Flood Safety Knowledge!</h4>
-                            <p class="lead mb-4">This quiz contains 15 questions covering flood preparedness, safety during floods, and recovery. Test your knowledge and see how well-prepared you are!</p>
-                            <button class="btn btn-primary btn-lg" onclick="startQuiz()">
-                                <i class="fas fa-play"></i> Start Quiz
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Quiz Container -->
-            <div id="quiz-container" style="display:none;">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <!-- Progress Bar -->
-                                <div class="mb-4">
-                                    <div class="d-flex justify-content-between mb-2">
-                                        <span id="question-number">Question 1/15</span>
-                                        <span id="score-display">Score: 0</span>
-                                    </div>
-                                    <div class="progress" style="height: 15px;">
-                                        <div id="quiz-progress-bar" class="progress-bar bg-info" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Question -->
-                                <div id="question" class="mb-4"></div>
-                                
-                                <!-- Options -->
-                                <div id="options"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Results Screen -->
-            <div id="result" style="display:none;">
-                <div class="row">
-                    <div class="col-lg-8 offset-lg-2">
-                        <div class="card">
-                            <div class="card-body text-center py-5">
-                                <h2 class="mb-4">Quiz Complete!</h2>
-                                
-                                <div class="mb-4">
-                                    <div style="font-size: 3rem; font-weight: bold; color: #007bff;">
-                                        <span id="score"></span>
-                                    </div>
-                                    <div style="font-size: 1.5rem; color: #6c757d;">
-                                        <span id="percentage"></span> Correct
-                                    </div>
-                                </div>
-                                
-                                <p id="feedback" class="lead mb-4" style="font-size: 1.2rem;"></p>
-                                
-                                <button class="btn btn-primary btn-lg" onclick="startQuiz()">
-                                    <i class="fas fa-redo"></i> Retry Quiz
-                                </button>
-                                <a href="#home" class="btn btn-secondary btn-lg ms-2">
-                                    <i class="fas fa-home"></i> Back to Home
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Us Section -->
-    <section id="about" class="section bg-white">
-        <div class="container py-5 text-center">
-            <h2 class="text-primary mb-4"><i class="fas fa-users"></i> About Us</h2>
-            <p>This project was created by a student team to educate on flood safety using technology. Our goal is to empower communities with knowledge for better preparedness.</p>
-            <p>Team: Alice (Designer), Bob (Developer), Charlie (Researcher).</p>
-        </div>
-    </section>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
