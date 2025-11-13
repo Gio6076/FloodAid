@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Preparedness Checklist - FloodFacts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="preparedness">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="index.html"><i class="fas fa-water"></i> FloodFacts</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="home" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="preparedness" href="preparedness.html">Preparedness</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="quiz" href="quiz.html">Quiz</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="stories" href="stories.html">Stories</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="about" href="about.html">About</a></li>
+                    <li class="nav-item"><a id="login-link" class="nav-link text-white" data-nav="login" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section bg-light text-center">
+            <div class="container">
+                <h1 class="display-5 text-primary mb-3"><i class="fas fa-clipboard-check"></i> Flood Preparedness Checklist</h1>
+                <p class="lead text-dark">Track your readiness before and during flood events. Your progress is saved locally so you can return anytime.</p>
+            </div>
+        </section>
+
+        <section id="before" class="section bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h2 class="text-center text-primary mb-4"><i class="fas fa-shield-alt"></i> Before the Flood</h2>
+
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Progress</span>
+                                        <span><span id="checked-count">0</span>/16</span>
+                                    </div>
+                                    <div class="progress" style="height: 25px;">
+                                        <div id="progress-bar" class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="16"></div>
+                                    </div>
+                                </div>
+
+                                <div class="checklist-container">
+                                    <h5 class="mt-2 mb-3 text-info"><i class="fas fa-backpack"></i> Emergency Kit</h5>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check1">
+                                        <label class="form-check-label" for="check1">Stock water (1 gallon/person/day)</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check2">
+                                        <label class="form-check-label" for="check2">Store non-perishable food for 2 weeks</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check3">
+                                        <label class="form-check-label" for="check3">Keep all medications stocked</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check4">
+                                        <label class="form-check-label" for="check4">Prepare first aid kit</label>
+                                    </div>
+
+                                    <h5 class="mt-3 mb-3 text-info"><i class="fas fa-home"></i> Home Security</h5>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check5">
+                                        <label class="form-check-label" for="check5">Elevate appliances above ground</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check6">
+                                        <label class="form-check-label" for="check6">Move documents to waterproof storage</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check7">
+                                        <label class="form-check-label" for="check7">Install flood vents in basement</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check8">
+                                        <label class="form-check-label" for="check8">Clear drainage around property</label>
+                                    </div>
+
+                                    <h5 class="mt-3 mb-3 text-info"><i class="fas fa-directions-run"></i> Evacuation</h5>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check9">
+                                        <label class="form-check-label" for="check9">Identify evacuation routes</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check10">
+                                        <label class="form-check-label" for="check10">Know your flood zone</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check11">
+                                        <label class="form-check-label" for="check11">Plan pet evacuation</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check12">
+                                        <label class="form-check-label" for="check12">Pre-arrange accommodation</label>
+                                    </div>
+
+                                    <h5 class="mt-3 mb-3 text-info"><i class="fas fa-bell"></i> Communication</h5>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check13">
+                                        <label class="form-check-label" for="check13">Subscribe to alert systems</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check14">
+                                        <label class="form-check-label" for="check14">Create family communication plan</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check15">
+                                        <label class="form-check-label" for="check15">Download weather alert apps</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input checklist-item" type="checkbox" id="check16">
+                                        <label class="form-check-label" for="check16">Store insurance & property photos</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="during" class="section bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h2 class="text-center text-primary mb-4"><i class="fas fa-phone"></i> During the Flood</h2>
+
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Progress</span>
+                                        <span><span id="during-checked-count">0</span>/16</span>
+                                    </div>
+                                    <div class="progress" style="height: 25px;">
+                                        <div id="during-progress-bar" class="progress-bar bg-warning" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="16"></div>
+                                    </div>
+                                </div>
+
+                                <div class="checklist-container">
+                                    <h5 class="mt-2 mb-3 text-info"><i class="fas fa-exclamation-circle"></i> Immediate Actions</h5>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check1">
+                                        <label class="form-check-label" for="during-check1">Move to higher ground</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check2">
+                                        <label class="form-check-label" for="during-check2">Turn off gas and electricity</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check3">
+                                        <label class="form-check-label" for="during-check3">Avoid flooded roads</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check4">
+                                        <label class="form-check-label" for="during-check4">Do not use elevators</label>
+                                    </div>
+
+                                    <h5 class="mt-3 mb-3 text-info"><i class="fas fa-users"></i> Family & Communication</h5>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check5">
+                                        <label class="form-check-label" for="during-check5">Alert family members</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check6">
+                                        <label class="form-check-label" for="during-check6">Contact meeting point</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check7">
+                                        <label class="form-check-label" for="during-check7">Register with authorities</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check8">
+                                        <label class="form-check-label" for="during-check8">Update emergency contacts</label>
+                                    </div>
+
+                                    <h5 class="mt-3 mb-3 text-info"><i class="fas fa-heartbeat"></i> Health & Safety</h5>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check9">
+                                        <label class="form-check-label" for="during-check9">Avoid flood water contact</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check10">
+                                        <label class="form-check-label" for="during-check10">Do not touch electrical equipment</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check11">
+                                        <label class="form-check-label" for="during-check11">Wear protective gear</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check12">
+                                        <label class="form-check-label" for="during-check12">Keep medications secure</label>
+                                    </div>
+
+                                    <h5 class="mt-3 mb-3 text-info"><i class="fas fa-photo-video"></i> Valuables & Documentation</h5>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check13">
+                                        <label class="form-check-label" for="during-check13">Grab critical documents</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check14">
+                                        <label class="form-check-label" for="during-check14">Take property photos/videos</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check15">
+                                        <label class="form-check-label" for="during-check15">Keep emergency kit with you</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input during-checklist-item" type="checkbox" id="during-check16">
+                                        <label class="form-check-label" for="during-check16">Follow official instructions</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-white">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-6">
+                        <h3 class="text-primary mb-3"><i class="fas fa-info-circle"></i> Tips for Staying Ready</h3>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Review and update this checklist every season.</li>
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Practice evacuation drills with your household.</li>
+                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Store important documents both physically and digitally.</li>
+                            <li><i class="fas fa-check text-primary me-2"></i>Monitor weather alerts and local government advisories.</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h4 class="card-title text-primary"><i class="fas fa-cloud-sun-rain"></i> Stay Informed</h4>
+                                <p class="card-text">Identify reliable news channels, community alert systems, and weather apps. Knowing who to listen to and when to act makes all the difference.</p>
+                                <a href="stories.html" class="btn btn-outline-primary">Learn from Community Stories</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-4 bg-primary text-white text-center">
+        <div class="container">
+            <small>&copy; <span id="current-year"></span> FloodFacts. Empowering communities with flood awareness.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+
