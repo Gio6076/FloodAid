@@ -13,7 +13,7 @@
         <div class="card p-4" style="width: 100%; max-width: 400px;">
             <h2 class="text-center text-primary mb-4"><i class="fas fa-sign-in-alt"></i> Login to FloodFacts</h2>
             <p class="text-muted text-center">Optional: Login to personalize your experience. The site is fully accessible without an account.</p>
-            <form id="login-form">
+            <form id="login-form" onsubmit="handleLogin(event)">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control" id="username" required>
