@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About FloodFacts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="about">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="index.html"><i class="fas fa-water"></i> FloodFacts</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="home" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="preparedness" href="preparedness.html">Preparedness</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="quiz" href="quiz.html">Quiz</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="stories" href="stories.html">Stories</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" data-nav="about" href="about.html">About</a></li>
+                    <li class="nav-item"><a id="login-link" class="nav-link text-white" data-nav="login" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section bg-light text-center">
+            <div class="container">
+                <h1 class="display-5 text-primary mb-3"><i class="fas fa-users"></i> About FloodFacts</h1>
+                <p class="lead text-dark">FloodFacts is a student-led initiative focused on educating communities on flood preparedness, safety, and recovery.</p>
+            </div>
+        </section>
+
+        <section class="section bg-white">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h3 class="card-title text-primary"><i class="fas fa-bullseye"></i> Our Mission</h3>
+                                <p>We empower families and barangays with accessible resources to prepare for floods, respond safely, and rebuild stronger. By combining technology, research, and community stories, we aim to make flood knowledge practical and shareable.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h3 class="card-title text-primary"><i class="fas fa-lightbulb"></i> What We Provide</h3>
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Interactive preparedness checklists</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Knowledge assessments through quizzes</li>
+                                    <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Community-driven stories and recovery tips</li>
+                                    <li><i class="fas fa-check text-primary me-2"></i>Guidance for building resilience after floods</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-light">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-6">
+                        <h3 class="text-primary mb-3"><i class="fas fa-people-carry"></i> Meet the Team</h3>
+                        <p>FloodFacts started as a capstone project combining design, development, and local disaster research.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><strong>Joshua Alix</strong> – UI/UX Design & community interviews</li>
+                            <li class="mb-2"><strong>Kurt </strong> – Frontend development & content structure</li>
+                            <li class="mb-2"><strong>Joe</strong> – Research & data validation</li>
+                            <li><strong>Kenneth</strong> – Community outreach & story collection</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h4 class="card-title text-primary"><i class="fas fa-handshake"></i> Contribute</h4>
+                                <p>We welcome collaboration with LGUs, NGOs, and schools. Share your flood education materials or success stories to expand this resource.</p>
+                                <a href="stories.html" class="btn btn-primary">Share a Story</a>
+                                <a href="mailto:team@floodfacts.com" class="btn btn-outline-primary ms-2">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section bg-white">
+            <div class="container">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary"><i class="fas fa-tools"></i> Technology Stack</h3>
+                        <p>This prototype is crafted with HTML5, Bootstrap 5, custom CSS, and vanilla JavaScript. Data persistence uses browser localStorage. Future phases will include a PHP + MySQL backend for user accounts and post-flood reports.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-4 bg-primary text-white text-center">
+        <div class="container">
+            <small>&copy; <span id="current-year"></span> FloodFacts. Empowering communities with flood awareness.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+
