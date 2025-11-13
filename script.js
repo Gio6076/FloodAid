@@ -1,3 +1,28 @@
+// Login Handler
+function handleLogin(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    localStorage.setItem('username', username);
+    window.location.href = 'index.html';
+}
+
+// Display welcome message with username
+function displayWelcomeMessage() {
+    const username = localStorage.getItem('username');
+    const welcomeDiv = document.getElementById('welcome-message');
+    if (username && welcomeDiv) {
+        welcomeDiv.innerHTML = `<p class="lead text-success"><i class="fas fa-user-check"></i> Welcome, ${username}!</p>`;
+        welcomeDiv.style.display = 'block';
+    }
+}
+
+// Call welcome message on page load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', displayWelcomeMessage);
+} else {
+    displayWelcomeMessage();
+}
+
 // Smooth scrolling for nav links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
