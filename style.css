@@ -11,13 +11,12 @@ body {
 
 /* Glassmorphism Effect for Home Section */
 #home {
-    /* Add your background image here, e.g., background-image: url('flood-background.jpg'); */
     background-size: cover;
     background-position: center;
-    backdrop-filter: blur(15px); /* Frosted glass blur */
-    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white overlay */
-    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Depth shadow */
+    backdrop-filter: blur(15px);
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     position: relative;
     background-image: url('floodhome.jpg');
 }
@@ -30,23 +29,23 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3); /* 30% opacity black overlay */
-    z-index: 0; /* Behind content, above image */
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 0;
 }
 
 /* Ensure content inside home section is readable */
 #home .container {
     position: relative;
-    z-index: 1; /* Bring text above the glass effect and overlay */
-    background-color: rgba(255, 255, 255, 0.1); /* Optional: slight overlay on text area for better contrast */
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 20px;
-    backdrop-filter: blur(5px); /* Light blur on the container for extra glassmorphism */
+    backdrop-filter: blur(5px);
 }
 
 /* Brighter green for welcome message */
 #welcome-message .text-success {
-    color: #00ff00 !important; /* Brighter green */
+    color: #00ff00 !important;
 }
 
 .navbar-brand, .nav-link {
@@ -142,4 +141,96 @@ html {
 
 .story-card small {
     color: #6c757d;
+}
+
+/* Quiz Styles */
+.quiz-option {
+    transition: all 0.3s ease;
+}
+
+.quiz-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#quiz-progress-bar {
+    transition: width 0.5s ease;
+}
+
+/* Registration Form Styles */
+.form-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+/* Password strength indicator */
+.password-strength {
+    height: 5px;
+    margin-top: 5px;
+    border-radius: 3px;
+}
+
+.password-strength.weak {
+    background-color: #dc3545;
+    width: 33%;
+}
+
+.password-strength.medium {
+    background-color: #ffc107;
+    width: 66%;
+}
+
+.password-strength.strong {
+    background-color: #28a745;
+    width: 100%;
+}
+
+/* Form validation styles */
+input:invalid {
+    border-color: #dc3545;
+}
+
+input:valid {
+    border-color: #28a745;
+}
+
+/* Loading state for buttons */
+.btn-loading {
+    position: relative;
+    color: transparent;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Loading spinner for buttons */
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Success alert styles */
+.alert-success {
+    border-left: 4px solid #28a745;
 }
