@@ -29,10 +29,10 @@
     </nav>
 
     <main>
-        <section class="section bg-light text-center">
+        <section id="stories-hero" class="section text-center">
             <div class="container">
-                <h1 class="display-5 text-primary mb-3"><i class="fas fa-comments"></i> Share Your Flood Story</h1>
-                <p class="lead text-dark">Your experiences can inspire, educate, and support others preparing for or recovering from floods.</p>
+                <h1 class="display-5 text-white mb-3"><i class="fas fa-comments"></i> Share Your Flood Story</h1>
+                <p class="lead">Your experiences can inspire, educate, and support others preparing for or recovering from floods.</p>
             </div>
         </section>
 
@@ -52,6 +52,25 @@
                         <div class="mb-3">
                             <label for="story-text" class="form-label">Your Story</label>
                             <textarea class="form-control" id="story-text" rows="5" placeholder="Share your experience or tips..." required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Severity</label>
+                            <div class="d-flex align-items-center">
+                                <div id="selected-severity" class="me-2">
+                                    <span class="severity-badge severity-moderate"><i class="fas fa-exclamation-triangle"></i> Moderate</span>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="severityDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Choose severity
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="severityDropdown">
+                                        <li><a class="dropdown-item" href="#" data-severity="critical"><i class="fas fa-exclamation-triangle text-danger me-2"></i>Critical</a></li>
+                                        <li><a class="dropdown-item" href="#" data-severity="severe"><i class="fas fa-exclamation-triangle" style="color: #ff7f2a;" class="me-2"></i>Severe</a></li>
+                                        <li><a class="dropdown-item" href="#" data-severity="moderate"><i class="fas fa-exclamation-triangle text-warning me-2"></i>Moderate</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <input type="hidden" id="story-severity" name="severity" value="moderate">
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Submit Story</button>
                     </form>
