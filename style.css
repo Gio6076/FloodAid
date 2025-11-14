@@ -344,3 +344,27 @@ input:valid {
     top: 1rem;
     right: 1rem;
 }
+
+/* Compact specific content sections to remove excess space and tighten layout */
+body[data-page="home"] main > section:nth-of-type(2),
+body[data-page="home"] main > section:nth-of-type(3),
+body[data-page="preparedness"] main > section:nth-of-type(4),
+body[data-page="stories"] main > section:nth-of-type(4),
+body[data-page="about"] main > section:nth-of-type(2),
+body[data-page="about"] main > section:nth-of-type(3),
+body[data-page="about"] main > section:nth-of-type(4) {
+    padding: 1.25rem 0;
+    min-height: auto;
+}
+
+/* Slightly tighten inner containers for compact look */
+body[data-page="home"] main > section:nth-of-type(2) .container,
+body[data-page="home"] main > section:nth-of-type(3) .container,
+body[data-page="preparedness"] main > section:nth-of-type(4) .container,
+body[data-page="stories"] main > section:nth-of-type(4) .container,
+body[data-page="about"] main > section:nth-of-type(2) .container,
+body[data-page="about"] main > section:nth-of-type(3) .container,
+body[data-page="about"] main > section:nth-of-type(4) .container {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
