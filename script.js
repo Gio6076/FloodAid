@@ -408,7 +408,7 @@ function initQuiz() {
         const percentageEl = document.getElementById('percentage');
         const feedbackEl = document.getElementById('feedback');
 
-        if (scoreEl) scoreEl.textContent = `${score}/${totalQuestions}`;
+        if (scoreEl) scoreEl.textContent = score;
         if (percentageEl) percentageEl.textContent = `${percentage}%`;
 
         let feedback = '';
