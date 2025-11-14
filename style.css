@@ -4,6 +4,20 @@ body {
     padding-top: 70px;
 }
 
+/* Layout specific to the login page to keep footer at bottom and center content */
+body[data-page="login"] {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 70px;
+}
+
+body[data-page="login"] main {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
 .section {
     padding: 4rem 0;
     min-height: 60vh;
@@ -38,6 +52,66 @@ body {
     position: relative;
     z-index: 1;
     background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+/* Glass heroes for other pages - reuse home styles with different images */
+#preparedness-hero,
+#quiz-hero,
+#stories-hero,
+#about-hero,
+#login-hero {
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(15px);
+    background-color: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+    position: relative;
+}
+
+#preparedness-hero { background-image: url('floodpreparedness.jpg'); }
+#quiz-hero { background-image: url('floodquiz.jpeg'); }
+#stories-hero { background-image: url('floodstory.jpg'); }
+#about-hero { background-image: url('floodabout.jpg'); }
+#login-hero { background-image: url('floodlogin.jpg'); }
+
+/* Tighter, centered hero for login: ensure the card is vertically centered and gives space above/below */
+#login-hero {
+    min-height: calc(100vh - 140px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+/* subtle dark overlay for readability */
+#preparedness-hero::before,
+#quiz-hero::before,
+#stories-hero::before,
+#about-hero::before,
+#login-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.35);
+    z-index: 0;
+}
+
+/* Ensure container content sits above overlay and has glass panel */
+#preparedness-hero .container,
+#quiz-hero .container,
+#stories-hero .container,
+#about-hero .container,
+#login-hero .container {
+    position: relative;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.08);
     border-radius: 10px;
     padding: 20px;
     backdrop-filter: blur(5px);
@@ -233,4 +307,40 @@ input:valid {
 /* Success alert styles */
 .alert-success {
     border-left: 4px solid #28a745;
+}
+
+/* Severity badges for stories */
+.severity-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.28rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.severity-critical {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.severity-severe {
+    background-color: #ff7f2a;
+    color: #ffffff;
+}
+
+.severity-moderate {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.story-card {
+    position: relative;
+}
+
+.story-card .severity-pill {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
