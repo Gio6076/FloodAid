@@ -482,15 +482,18 @@ function initStories() {
             storiesList.innerHTML = '<p class="text-muted text-center">No stories shared yet. Be the first to share your experience.</p>';
             return;
         }
-
-        storiesList.innerHTML = stories.map(story => `
-            <div class="story-card">
+        storiesList.innerHTML = stories.map(story => {
+            const sev = story.severity || 'moderate';
+            const sevLabel = sev.charAt(0).toUpperCase() + sev.slice(1);
+            return `
+            <div class="story-card card shadow-sm mb-3 p-3">
+                <div class="severity-pill"><span class="severity-badge severity-${sev}"><i class="fas fa-exclamation-triangle"></i> ${sevLabel}</span></div>
                 <h5>${story.name || 'Community Member'}</h5>
                 <small><i class="fas fa-map-marker-alt"></i> ${story.location}</small>
                 <small class="d-block"><i class="fas fa-clock"></i> ${new Date(story.submittedAt?.toDate?.() || story.submittedAt).toLocaleDateString()}</small>
                 <p class="mt-3 mb-0">${story.story}</p>
             </div>
-        `).join('');
+        `}).join('');
     }
 
     function toggleFormState(loggedIn, username) {
@@ -557,6 +560,7 @@ function initStories() {
 
         const location = document.getElementById('story-location')?.value.trim();
         const storyText = document.getElementById('story-text')?.value.trim();
+        const severity = document.getElementById('story-severity')?.value || 'moderate';
 
         if (!location || !storyText) {
             alert('Please complete all fields before submitting your story.');
@@ -574,6 +578,7 @@ function initStories() {
             name: user.displayName || user.email.split('@')[0],
             location,
             story: storyText,
+            severity,
             userId: user.uid,
             submittedAt: firebase.firestore.FieldValue.serverTimestamp()
         };
@@ -602,6 +607,23 @@ function initStories() {
             submitButton.disabled = false;
         }
     });
+
+    // Wire up severity dropdown inside the story form
+    const severityDropdownItems = storyForm.querySelectorAll('.dropdown-item');
+    const selectedSeverityEl = document.getElementById('selected-severity');
+    const storySeverityInput = document.getElementById('story-severity');
+    if (severityDropdownItems && selectedSeverityEl && storySeverityInput) {
+        severityDropdownItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sev = item.getAttribute('data-severity');
+                if (!sev) return;
+                storySeverityInput.value = sev;
+                const label = sev.charAt(0).toUpperCase() + sev.slice(1);
+                selectedSeverityEl.innerHTML = `<span class="severity-badge severity-${sev}"><i class="fas fa-exclamation-triangle"></i> ${label}</span>`;
+            });
+        });
+    }
 
     const auth = getAuth();
     auth.onAuthStateChanged((user) => {
