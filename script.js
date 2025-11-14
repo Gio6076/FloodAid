@@ -710,6 +710,19 @@ window.handleRegister = async function handleRegister(event) {
             stories: []
         });
 
+        // Notify the user of successful registration and ask to return to login
+        try {
+            const goToLogin = confirm('Your account was created successfully. Would you like to go to the login page now?');
+            if (goToLogin) {
+                window.location.href = 'login.html';
+            } else {
+                alert('Account created. You can log in anytime from the login page.');
+            }
+        } catch (e) {
+            // In case confirm/alert are blocked for some reason, fallback to redirecting to login
+            window.location.href = 'login.html';
+        }
+
 
     } catch (error) {
         console.error('Registration error:', error);
